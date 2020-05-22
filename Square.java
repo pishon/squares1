@@ -14,8 +14,8 @@ public class Square {
     private static void proc_cell(int[][] m, int cur_h, int cur_l) {
 
         int cur_size;
-        int cur_ones;
         boolean find_next;
+		boolean is_square;
 
         if (m[cur_h][cur_l] == 1) {
 
@@ -26,19 +26,32 @@ public class Square {
             while (cur_size < max_size && find_next == true) {
 
                 cur_size = cur_size + 1;
-                cur_ones = 0;
-
-                for (int h = cur_h; h <= cur_h + cur_size - 1 && h < height; h++) {
-                    for (int l = cur_l; l <= cur_l + cur_size - 1 && l < length; l++) {
-                        if (m[h][l] == 1) {
-                            cur_ones = cur_ones + 1;
-                        } else {
+				is_square = true;
+				
+				if ( cur_h + cur_size - 1 >= height || cur_l + cur_size - 1 >= length) {
+					break;
+				}
+				
+				
+                for (int h = cur_h; h <= cur_h + cur_size - 1; h++) {
+                    for (int l = cur_l; l <= cur_l + cur_size - 1; l++) {
+						
+						//System.out.print(m[h][l] + " ");
+						
+                        if (m[h][l] != 1) {
+							is_square = false;
                             break;
                         }
                     }
+					
+					//System.out.println(" ");
+					
                 }
+				
+				//System.out.println(" ");
+				//System.out.println(" ");
 
-                if (cur_ones == cur_size * cur_size) {
+                if (is_square == true) {
                     squares_count[cur_size] = squares_count[cur_size] + 1;
                 } else {
                     find_next = false;
@@ -86,8 +99,9 @@ public class Square {
         int[][] m = {   {0, 1, 1, 1},
                         {1, 1, 1, 1},
                         {0, 1, 1, 1}
-                    };*/
-
+                    };
+		*/
+		
         int[][] m = {   {1, 0, 1},
                         {1, 1, 0},
                         {1, 1, 0}
