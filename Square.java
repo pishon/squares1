@@ -15,7 +15,7 @@ public class Square {
 
         int cur_size;
         boolean find_next;
-		boolean is_square;
+	boolean is_square;
 
         if (m[cur_h][cur_l] == 1) {
 
@@ -26,11 +26,11 @@ public class Square {
             while (cur_size < max_size && find_next == true) {
 
                 cur_size = cur_size + 1;
-				is_square = true;
-				
-				if ( cur_h + cur_size - 1 >= height || cur_l + cur_size - 1 >= length) {
-					break;
-				}
+		is_square = true;
+
+		if ( cur_h + cur_size - 1 >= height || cur_l + cur_size - 1 >= length) {
+			break;
+		}
 				
 				
                 for (int h = cur_h; h <= cur_h + cur_size - 1; h++) {
